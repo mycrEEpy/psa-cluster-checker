@@ -1,0 +1,29 @@
+version: 2
+
+builds:
+  - id: psa-cluster-checker
+    main: ./cmd/psa-cluster-checker
+    binary: psa-cluster-checker
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+  - id: psa-cluster-checker-windows
+    main: ./cmd/psa-cluster-checker
+    binary: psa-cluster-checker.exe
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+    goarch:
+      - amd64
+
+archives:
+  - name_template: "psa-cluster-checker{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    builds:
+      - psa-cluster-checker
+      - psa-cluster-checker-windows
