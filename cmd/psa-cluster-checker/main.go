@@ -50,7 +50,7 @@ func main() {
 		panic(err)
 	}
 
-	evaluator, err := policy.NewEvaluator(policy.DefaultChecks())
+	evaluator, err := policy.NewEvaluator(policy.DefaultChecks(), nil)
 	if err != nil {
 		panic(err)
 	}
